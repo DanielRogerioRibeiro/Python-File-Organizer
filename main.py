@@ -1,3 +1,5 @@
+#Organizador de Arquivo
+
 import os
 
 from tkinter import*
@@ -5,7 +7,7 @@ from tkinter import Tk, StringVar, ttk
 from tkinter import filedialog as fd
 from tkinter import messagebox
 
-
+from PIL import Image, ImageTk
 
 ################# colors ###############
 
@@ -46,7 +48,32 @@ frameMiddle = Frame(window,width=700, height=300,bg=co1)
 frameMiddle.grid(row=1, column=0,sticky=NSEW)
 
 
+# opening image
 
+app_img = Image.open('imagens/icon.png')
+app_img = app_img.resize((45, 45))
+app_img = ImageTk.PhotoImage(app_img)
+
+app_logo = Label(frameUp, image=app_img, text="File Organizer App", width=700, compound=LEFT, padx=5, relief=RAISED, anchor=NW, font=('Verdana 20 bold'),bg= co1, fg=co4 )
+app_logo.place(x=0, y=0)
+
+#Trabalhando no Frame meio
+
+#Dividindo o Frame meio em Operações (lado Esquerdo) e Gráfico (Lado Direito)
+
+frame_operations = Frame(frameMiddle, width=300, height=350,bg=co1)
+frame_operations.grid(row=0,column=0)
+
+frame_graphic = Frame(frameMiddle, width=400, height=350,bg=co1)
+frame_graphic.place(x=170,y=0)
+
+frame_operations.lift()
+
+#criando botões e entradas
+
+# Select Folder -----------------------------------
+
+l_app = Label(frame_operations, text="Select Folder", anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
+l_app.place(x=10, y=10)
 
 window.mainloop()
-

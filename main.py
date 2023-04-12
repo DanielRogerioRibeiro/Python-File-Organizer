@@ -23,16 +23,16 @@ from view import *
 
 ################# colors ###############
 
-co0 = "#2e2d2b"  # Black
-co1 = "#feffff"  # White
-co2 = "#4fa882"  # Green
-co3 = "#38576b"  # Value
-co4 = "#403d3d"  # Letter
-co5 = "#e06636"  # - profit
-co6 = "#038cfc"  # Blue
-co7 = "#3fbfb9"  # Green
-co8 = "#263238"  # + green
-co9 = "#e9edf5"  # + green
+co0  = "#2e2d2b"  # Black
+co1  = "#feffff"  # White
+co2  = "#4fa882"  # Green
+co3  = "#38576b"  # Value
+co4  = "#403d3d"  # Letter
+co5  = "#e06636"  # - profit
+co6  = "#038cfc"  # Blue
+co7  = "#3fbfb9"  # Green
+co9  = "#e9edf5"  # + green
+co10 = "#F0F8FF"
 
 colors = ['#1f77b4', '#66bbbb','#99bb55', '#ee9944', '#444466', '#bb5555','#1f77b4','#ff7f0e','#2ca02c','#d62728','#9467bd','#8c564b','#e377c2' ,'#7f7f7f','#bcbd22','#17becf',]
 ['#1f77b4','#ff7f0e','#2ca02c','#d62728','#9467bd','#8c564b','#e377c2' ,'#7f7f7f','#bcbd22','#17becf','#ff9896','#98df8a','#aec7e8','#ffbb78' ,'#c5b0d5','#c49c94','#f7b6d2','#dbdb8d','#9edae5','#393b79']
@@ -53,19 +53,19 @@ janela.resizable(width=FALSE, height=FALSE)
 
 ################# Criando Frames ####################
 
-frameUp = Frame(janela, width=700, height=50, bg=co1,  relief="flat",)
+frameUp = Frame(janela, width=700, height=50, bg=co10,  relief="flat",)
 frameUp.grid(row=0, column=0)
 
-frameMiddle = Frame(janela,width=700, height=300,bg=co1)
+frameMiddle = Frame(janela,width=700, height=300,bg=co10)
 frameMiddle.grid(row=1, column=0,sticky=NSEW)
 
 
 # ------------- Criando Frame Individual -------------------------
 
-frame_operations = Frame(frameMiddle, width=300, height=350,bg=co1)
+frame_operations = Frame(frameMiddle, width=300, height=350,bg=co10)
 frame_operations.grid(row=0,column=0)
 
-frame_graph = Frame(frameMiddle, width=400, height=350,bg=co1)
+frame_graph = Frame(frameMiddle, width=400, height=350,bg=co10)
 frame_graph.place(x=170,y=0)
 
 frame_operations.lift()
@@ -83,7 +83,7 @@ app_logo.place(x=0, y=0)
 # pie chart function ------------------------
 def chart_pie(list_1, list_2):
      # make figure and assign axis objects
-     figure = plt.Figure(figsize=(5, 3), dpi=100)
+     figure = plt.Figure(figsize=(5.5, 3), dpi=100)
      ax = figure.add_subplot(111)
 
      list_values = list_1
@@ -98,7 +98,7 @@ def chart_pie(list_1, list_2):
 
 # Selecionando Pasta -----------------------------------
 
-l_app = Label(frame_operations, text="Select Folder", anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
+l_app = Label(frame_operations, text="Select Folder", anchor=NW, font=('Ivy 10 bold'), bg=co10, fg=co4)
 l_app.place(x=10, y=10)
 
 
@@ -112,7 +112,7 @@ def choose_folder():
     
      folder = fd.askdirectory()
 
-     # creating the list of extensions
+     # Criando a lista de extensão
      extension_list = ['.txt','.csv','.xlsx','.pdf','.zip','.jpg','.png','.mp3','.mp4','. py','.html','.css','.js']
      combobox_extension_list = []
      list_extension_counted = []
@@ -134,15 +134,15 @@ def choose_folder():
              number_of_folders = num_folders
 
 
-     # added the total number of folders
+     # Adicionando o numero total de pasta no gráfico
      list_extension_counted.append('folders: ' + str(number_of_folders))
      list_extension_values.append(number_of_folders)
 
-     # passing extensions to the combobox
+     # passando a extensão para o combobox
      combo_extension ['values'] = (combobox_extension_list)
      combo_extension_move ['values'] = (combobox_extension_list)
 
-     # sending the values to the graph by calling the graph function
+     # Envinado os valores do grafioo para chamar a função
      chart_pie(list_extension_values, list_extension_counted)
 
 
@@ -150,9 +150,9 @@ b_choose = Button(frame_operations,command=choose_folder, text="Choose ",width=1
 b_choose.place(x=10, y=40)
 
 
-# Copying Files -----------------------------------
+# Copiando Arquivos -----------------------------------
 
-l_app = Label(frame_operations, text="Copy Files", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_app = Label(frame_operations, text="Copy Files", anchor=NW, font=('Ivy 10'), bg=co10, fg=co4)
 l_app.place(x=10, y=91)
 
 
@@ -191,7 +191,7 @@ b_copy.place(x=171, y=90)
 
 # Move Files -----------------------------------
 
-l_app = Label(frame_operations, text="Move Files", height=1,anchor=NW,relief="flat", font=('Ivy 10'), bg=co1, fg=co4)
+l_app = Label(frame_operations, text="Move Files", height=1,anchor=NW,relief="flat", font=('Ivy 10'), bg=co10, fg=co4)
 l_app.place(x=10, y=141)
 
 def move():
@@ -207,10 +207,10 @@ def move():
      destination_folder = destination
      file_extension = extension
 
-     # calling the function to move the files
+     # Chamando a função mover o arquivo
      move_files_by_extension(source_folder, destination_folder, file_extension)
 
-     # inform
+     # informação
      messagebox.showinfo('Move', "The files were successfully moved")
 
      # clear field
@@ -219,7 +219,7 @@ def move():
 combo_extension_move = ttk.Combobox(frame_operations, width=5,font=('Ivy 10'))
 combo_extension_move.place(x=110, y=141)
 
-# move button
+# Botão Mover
 img_move = Image.open('imagens/mover.png')
 img_move = img_move.resize((17,17))
 img_move = ImageTk.PhotoImage(img_move)
@@ -229,11 +229,11 @@ b_move.place(x=171, y=140)
 
 # Excluir Arquivos -----------------------------------
 
-l_app = Label(frame_operations, text="Delete Files", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_app = Label(frame_operations, text="Delete Files", anchor=NW, font=('Ivy 10'), bg=co10, fg=co4)
 l_app.place(x=10, y=191)
 
 
-# Delete button
+# Botão Delete 
 img_delete = Image.open('imagens/delete.png')
 img_delete = img_delete.resize((17,17))
 img_delete = ImageTk.PhotoImage(img_delete)
